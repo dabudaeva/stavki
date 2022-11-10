@@ -1,0 +1,16 @@
+button {
+  color: white;
+  padding-right: 48px;
+  padding-left: 48px;
+  background-color: #696969;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 100%;
+  min-width: max-content;
+  padding: 0.5rem 1rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}

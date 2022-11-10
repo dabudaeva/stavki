@@ -26,6 +26,8 @@ li {
      padding: 20px;
      background-color: black;
      color: #fff;
+     position: fixed;
+     width:100%;
 }
 .nav-links a {
     color: #fff;
@@ -51,6 +53,10 @@ li {
     padding: 5px 14px;
 }
 
+main{
+    padding-top: 72px;
+}
+
 /* Description */
 .description {
     margin: 40px auto 48px;
@@ -73,45 +79,61 @@ li {
 .bookmakers-info-column-left {flex: 35%;}
 .bookmakers-info-column-right {flex: 65%;}
 
-/* Selector */
-.selector div {
-    width: 800px;
-    font-size: 20px;
+/* The sidebar menu */
+
+.input {
+    height: 100%;
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    top: 72px; /* Stay at the top */
+    background-color: grey; /* Black */
+    padding-top: 40px;
 }
 
+.output {
+    padding-left: 200px;
+}
+
+
+/* Selector */
+
 .selector select {
-    height:50px;
-	width:356px;
+    height:30px;
+	width:150px;
+	font-size: 100%;
 	background: #fff;
     border-color: rgba(0, 0, 0, 0.12);
     color: rgba(0, 0, 0, 0.73);
     padding: 2px 0px 1px 16px;
-}
-
-.selector optgroup {
-    font-size: 100%;
-}
-
-.selector input {
-    height:40px;
-	width:50px;
-    font-size: 100%;
-    background: #fff;
-    border-color: #fff;
 }
 
 .selector input[type=number] {
-    height:50px;
-	width:356px;
+    height:30px;
+	width:150px;
+	font-size: 100%;
 	background: #fff;
     border-color: rgba(0, 0, 0, 0.12);
     color: rgba(0, 0, 0, 0.73);
     padding: 2px 0px 1px 16px;
+}
+
+.selector input[type=submit] {
+    height:30px;
+    width:30px;
+    background: #B9DFFF;
+	color: #fff;
+	border: 1px solid #eee;
+	border-radius: 20px;
+}
+.selector input[type=submit]:hover {
+	background: #016ABC;
+	color: #fff;
+	border: 1px solid #eee;
+	border-radius: 20px;
 }
 
 /* Table */
 .table {
-  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 1000px;
 }
@@ -133,18 +155,13 @@ li {
   color: white;
 }
 
-.table input {
-  padding-right: 48px;
-  padding-left: 48px;
-  background-color: #696969;
-  border: none;
-  cursor: pointer;
-  display: block;
-  font: inherit;
-  height: 100%;
-  min-width: max-content;
-  padding: 0.5rem 1rem;
-  position: relative;
-  text-align: left;
-  width: 100%;
+button {
+    color: white;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+    font-size: 100%;
 }
+

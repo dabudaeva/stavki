@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmakers aggregator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="/">DataBet</a></div>
+        <ul class="nav-links">
+            <div class="menu">
+                <li><a href="/bet">Коэффициенты</a></li>
+                <li><a href="/info">Информация</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="selector" align="middle">
+            <br>
+            <div class="input" align="middle">
+
+                {% if select1==None %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+                    <input type="submit" value="✔️">
+                </form>
+                {% endif %}
+
+                {% if (select1!=None) and (select2==None) %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+                    <input type="submit" value="✔">
+                </form>
+                {% endif %}
+
+                {% if (select2!=None) and (coef1==None) %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <label>Коэффициенты:</label>
+                    <br>
+                        <select name="coef-1">
+                            <optgroup>
+                                <option selected="selected">{{ coef1 }}</option>
+                                {% for coef1 in coefs1%}
+                                <option value={{ coef1 }}>{{ coef1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+                    <input type="submit" value="✔">
+                </form>
+                {% endif %}
+
+                {% if (coef1!=None) and (coef2==None) %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <label>Коэффициенты:</label>
+                    <br>
+                        <select name="coef-1">
+                            <optgroup>
+                                <option selected="selected">{{ coef1 }}</option>
+                                {% for coef1 in coefs1%}
+                                <option value={{ coef1 }}>{{ coef1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="coef-2">
+                            <optgroup>
+                                <option selected="selected">{{ coef2 }}</option>
+                                {% for coef2 in coefs2%}
+                                <option value={{ coef2 }}>{{ coef2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <input type="submit" value="✔">
+
+                </form>
+                {% endif %}
+
+                {% if (coef2!=None) and (draw==None) %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <label>Коэффициенты:</label>
+                    <br>
+                        <select name="coef-1">
+                            <optgroup>
+                                <option selected="selected">{{ coef1 }}</option>
+                                {% for coef1 in coefs1%}
+                                <option value={{ coef1 }}>{{ coef1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="coef-2">
+                            <optgroup>
+                                <option selected="selected">{{ coef2 }}</option>
+                                {% for coef2 in coefs2%}
+                                <option value={{ coef2 }}>{{ coef2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="draw">
+                            <optgroup>
+                                <option selected="selected">{{ draw }}</option>
+                                {% for draw in draws%}
+                                <option value={{ draw }}>{{ draw }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <input type="submit" value="✔">
+
+                </form>
+                {% endif %}
+
+                {% if (draw!=None) and (deposit==None) %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <label>Коэффициенты:</label>
+                    <br>
+                        <select name="coef-1">
+                            <optgroup>
+                                <option selected="selected">{{ coef1 }}</option>
+                                {% for coef1 in coefs1%}
+                                <option value={{ coef1 }}>{{ coef1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="coef-2">
+                            <optgroup>
+                                <option selected="selected">{{ coef2 }}</option>
+                                {% for coef2 in coefs2%}
+                                <option value={{ coef2 }}>{{ coef2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="draw">
+                            <optgroup>
+                                <option selected="selected">{{ draw }}</option>
+                                {% for draw in draws%}
+                                <option value={{ draw }}>{{ draw }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <input type="number" step="1" min="1" max="100000" value="10000" name="deposit"/>
+                    </br>
+
+                    <input type="submit" value="✔">
+
+                </form>
+                {% endif %}
+
+                {% if deposit!=None %}
+                <form action="" method="POST">
+                    <label>Команды:</label>
+
+                    <br>
+                        <select name="select-1">
+                            <optgroup>
+                                <option selected="selected">{{ select1 }}</option>
+                                {% for country1 in countries1%}
+                                <option value={{ country1 }}>{{ country1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="select-2">
+                            <optgroup>
+                                <option selected="selected">{{ select2 }}</option>
+                                {% for country2 in countries2%}
+                                <option value={{ country2 }}>{{ country2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <label>Коэффициенты:</label>
+                    <br>
+                        <select name="coef-1">
+                            <optgroup>
+                                <option selected="selected">{{ coef1 }}</option>
+                                {% for coef1 in coefs1%}
+                                <option value={{ coef1 }}>{{ coef1 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="coef-2">
+                            <optgroup>
+                                <option selected="selected">{{ coef2 }}</option>
+                                {% for coef2 in coefs2%}
+                                <option value={{ coef2 }}>{{ coef2 }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <select name="draw">
+                            <optgroup>
+                                <option selected="selected">{{ draw }}</option>
+                                {% for draw in draws%}
+                                <option value={{ draw }}>{{ draw }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </br>
+
+                    <br>
+                        <input type="number" step="1" min="1" max="100000" value={{ deposit }} name="deposit"/>
+                    </br>
+
+                    <input type="submit" value="✔">
+
+                </form>
+
+                {% endif %}
+
+            </div>
+            </br>
+
+            <br>
+            <div class="output" align="right">
+
+            {% if (select1!=None) and (select2!=None) %}
+                <div align="middle">
+                    <br>
+                        <h1>Таблица коэффициентов</h1>
+                    </br>
+
+                    <br>
+                    <div class="table" vspace="60">
+                        <table id="table_id" class="display">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th><button onclick="sortTable(1)">{{ select1 }}</button></th>
+                                <th><button onclick="sortTable(2)">Ничья</button></th>
+                                <th><button onclick="sortTable(3)">{{ select2 }}</button></th>
+                                <th><button onclick="sortTable(4)">Маржа</button></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for index in indexes%}
+                            <tr>
+                                <td><a href={{ link[index] }}><img src={{ logo[index] }} width="100"></a></td>
+                                <td>{{ tcoef1[index] }}</td>
+                                <td>{{ tdraw[index] }}</td>
+                                <td>{{ tcoef2[index] }}</td>
+                                <td>{{ marga[index] }} %</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    </br>
+
+                </div>
+            {% endif %}
+
+
+            {% if bet!=None %}
+                <div align="middle">
+                    <br>
+                    <p>{{ select1 }}</p>
+                    <p>{{ select2 }}</p>
+                    <p>{{ coef1 }}</p>
+                    <p>{{ draw }}</p>
+                    <p>{{ coef2 }}</p>
+                    <p>{{ deposit }}</p>
+                    <p>{{ bet }}</p>
+                    </br>
+                </div>
+            {% endif %}
+
+            </div>
+            </br>
+
+        </div>
+
+    </main>
+    <script>
+    function sortTable(num) {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("table_id");
+      switching = true;
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[num];
+          y = rows[i + 1].getElementsByTagName("TD")[num];
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+    </script>
+</body>
+</html>
