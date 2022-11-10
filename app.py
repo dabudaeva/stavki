@@ -70,6 +70,24 @@ def data():
                            indexes=indexes,
                            # sort=sort
                            )
+
+@app.route('/fork')
+def fork():
+    countries1 = df.Team_1.unique().tolist()
+    countries2 = df.Team_2.unique().tolist()
+    select1, select2 = None, None
+    if request.method == 'POST':
+        select1 = request.form.get('select-1')
+        countries2 = df.loc[df.Team_1 == select1, 'Team_2'].unique().tolist()
+        if select1 != None:
+            select2 = request.form.get('select-2')
+    return render_template('fork.html',
+                           countries1=countries1,
+                           countries2=countries2,
+                           select1=select1,
+                           select2=select2,
+                           )
+
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1", port=5000)
 

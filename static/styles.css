@@ -31,9 +31,11 @@ li {
     color: #fff;
 }
 /* LOGO */
-.logo {
-    font-size: 32px;
+.logo a {
+    font-size: 28px;
+    color: #fff;
 }
+
 /* NAVBAR MENU */
 .menu {
     display: flex;
