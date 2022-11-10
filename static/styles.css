@@ -1,0 +1,139 @@
+/* UTILITIES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: #eff0f2;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* NAVBAR */
+.navbar {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 20px;
+     background-color: black;
+     color: #fff;
+}
+.nav-links a {
+    color: #fff;
+}
+/* LOGO */
+.logo {
+    font-size: 32px;
+}
+/* NAVBAR MENU */
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+.menu li:hover {
+     background-color: grey;
+     border-radius: 5px;
+     transition: 0.3s ease;
+}
+.menu li {
+    padding: 5px 14px;
+}
+
+/* Description */
+.description {
+    margin: 40px auto 48px;
+}
+
+.description div{
+    width: 800px;
+}
+
+/* Bookmakers-info */
+.bookmakers-info {
+    margin: 40px auto 48px;
+}
+
+.bookmakers-info div{
+    width: 1000px;
+}
+
+.bookmakers-info-row {display: flex;}
+.bookmakers-info-column-left {flex: 35%;}
+.bookmakers-info-column-right {flex: 65%;}
+
+/* Selector */
+.selector div {
+    width: 1000px;
+    font-size: 20px;
+}
+
+.selector select {
+    height:50px;
+	width:356px;
+	background: #fff;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.73);
+    padding: 2px 0px 1px 16px;
+}
+
+.selector optgroup {
+    font-size:40px;
+}
+
+.selector input {
+    height:40px;
+	width:50px;
+    font-size: 100%;
+    background: #fff;
+    border-color: #fff;
+}
+
+/* Table */
+.table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding-right: 48px;
+  padding-left: 48px;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #696969;
+  color: white;
+}
+
+.table input {
+  padding-right: 48px;
+  padding-left: 48px;
+  background-color: #696969;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 100%;
+  min-width: max-content;
+  padding: 0.5rem 1rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
