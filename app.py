@@ -35,7 +35,7 @@ def data():
     select1, select2 = None, None
     df_select = pd.DataFrame(columns=list(set(df.columns.append(bk.columns))))
     indexes = None
-    sort = None
+    # sort = None
     if request.method == 'POST':
         select1 = request.form.get('select-1')
         countries2 = df.loc[df.Team_1 == select1, 'Team_2'].unique().tolist()
@@ -47,13 +47,13 @@ def data():
                     df_select = df_select.merge(bk, on='Bookmakers')
                     indexes = np.arange(len(df_select.Bookmakers))
 
-                    sort = request.form.get('sort-action')
-                    if sort != None:
-                        if sort == 'БК': df_select = df_select.sort_values(by='Bookmakers')
-                        elif sort == select1: df_select = df_select.sort_values(by='W1')
-                        elif sort == 'Ничья': df_select = df_select.sort_values(by='Draw')
-                        elif sort == select2: df_select = df_select.sort_values(by='W2')
-                        elif sort == 'Маржа': df_select = df_select.sort_values(by='Marginal_')
+                    # sort = request.form.get('sort-action')
+                    # if sort != None:
+                    #     if sort == 'БК': df_select = df_select.sort_values(by='Bookmakers')
+                    #     elif sort == select1: df_select = df_select.sort_values(by='W1')
+                    #     elif sort == 'Ничья': df_select = df_select.sort_values(by='Draw')
+                    #     elif sort == select2: df_select = df_select.sort_values(by='W2')
+                    #     elif sort == 'Маржа': df_select = df_select.sort_values(by='Marginal_')
                 except:
                     print('такого матча нет')
     return render_template('data.html',
@@ -68,7 +68,8 @@ def data():
                            coef2=df_select.W2,
                            marga=df_select.Marginal_,
                            indexes=indexes,
-                           sort=sort)
+                           # sort=sort
+                           )
 if __name__ == '__main__':
     app.run(debug=True, host="127.0.0.1", port=5000)
 
@@ -76,8 +77,9 @@ if __name__ == '__main__':
 # Затем flask run
 
 
-#df = pd.read_csv('data/qatar_ecuador.csv', decimal=',')
+#
 
+#df = pd.read_csv('data/qatar_ecuador.csv', decimal=',')
 # max_coef = [df.W1.max(), df.Draw.max(), df.W2.max()]
 # my_bet = bet(100000, max_coef)
 # best = my_bet.best_combinations3()
