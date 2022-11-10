@@ -10,7 +10,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 from fake_useragent import UserAgent
 
-import split_div_BaltBet
+from parsing.split_div_BaltBet import split_list
+# import split_div_BaltBet
 import save_to_csv
 
 def baltbet():
@@ -47,7 +48,8 @@ def baltbet():
         block_name_list = [value.text for value in block_name]
         # print(f'\nblock_name_list: {block_name_list}\n')
 
-        splitted_list = split_div_BaltBet.split_list(block_name_list) # split List
+        # splitted_list = split_div_BaltBet.split_list(block_name_list) # split List
+        splitted_list = split_list(block_name_list) # split List
         save_to_csv.save_to_file(splitted_list) # splitted List saving to csv-file
         
     except:
