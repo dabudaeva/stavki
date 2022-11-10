@@ -17,7 +17,11 @@ def custom400(error):
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html',
+    return render_template('index.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html',
                            name=bk.name,
                            link=bk.homepage,
                            description=bk.description,
@@ -82,20 +86,15 @@ def fork():
     if request.method == 'POST':
         select1 = request.form.get('select-1')
         countries2 = df.loc[df.Team_1 == select1, 'Team_2'].unique().tolist()
-        if select1 != None:
-            select2 = request.form.get('select-2')
-            try:
-                df_select = df.loc[(df['Team_1'] == select1) & (df['Team_2'] == select2)]
-            except:
-                print('такого матча нет')
-        if select2 != None:
-            coef1 = request.form.get('coef-1')
-        if coef1 != None:
-            coef2 = request.form.get('coef-2')
-        if coef2 != None:
-            draw = request.form.get('draw')
-        if draw != None:
-            deposit = request.form.get('deposit')
+        select2 = request.form.get('select-2')
+        try:
+            df_select = df.loc[(df['Team_1'] == select1) & (df['Team_2'] == select2)]
+        except:
+            print('такого матча нет')
+        coef1 = request.form.get('coef-1')
+        coef2 = request.form.get('coef-2')
+        draw = request.form.get('draw')
+        deposit = request.form.get('deposit')
     # if deposit != None:
     #     my_bet = bet(deposit, [coef1, draw, coef2]).best_combinations3()
     #     best = my_bet.best_combinations3()

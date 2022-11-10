@@ -12,47 +12,17 @@
        <div class="menu">
             <li><a href="/data">Data</a></li>
             <li><a href="/fork">Fork</a></li>
+            <li><a href="/info">Info</a></li>
        </div>
      </ul>
    </nav>
 
     <main>
-        <div class="description" align="middle">
-            <img class="img" src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/2022_FIFA_World_Cup.svg/1200px-2022_FIFA_World_Cup.svg.png"
-                 alt="fifa 2022 logo" width="100" vspace="60">
-            <div>
-                <br>
-                <h1>DataBet - это агрегатор букмекерских контор, позволяющий находить лучшие коэффициенты на
-                    победу в <a href="https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/qatar2022">Чемпионате мира по футболу 2022</a> </h1>
-                </br>
-            </div>
-        </div>
-
-        <div class="bookmakers-info" align="middle">
-            <div align="middle">
-                <br>
-                <h2>Букмекерские конторы, участвующие в данном учебном приложении:</h2>
-                </br>
-            </div>
-            <div align="left">
-                {% for index in indexes %}
-                <div class="bookmakers-info-row" vspace="60">
-                    <br>
-                    <div class="bookmakers-info-column-left" align="middle">
-                        <br>
-                        <a href={{ link[index] }}><h4>{{ name[index] }}</h4></a>
-                        <a href={{ link[index] }}><img src={{ image[index] }} alt={{ name[index] }} width="200"></a>
-                        </br>
-                    </div>
-                    <div class="bookmakers-info-column-right">
-                        <br>
-                        <p>{{ description[index] }}</p>
-                        </br>
-                    </div>
-                    </br>
-                </div>
-                {% endfor %}
-            </div>
+        <div align="middle">
+            <p>Описание приложения</p>
+            <li><a href="/data">Data</a></li>
+            <li><a href="/fork">Fork</a></li>
+            <li><a href="/info">Fork</a></li>
         </div>
     </main>
 
