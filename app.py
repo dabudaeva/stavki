@@ -71,21 +71,47 @@ def data():
                            # sort=sort
                            )
 
-@app.route('/fork')
+@app.route('/fork', methods=['GET', 'POST'])
 def fork():
     countries1 = df.Team_1.unique().tolist()
     countries2 = df.Team_2.unique().tolist()
     select1, select2 = None, None
+    coef1, draw, coef2 = None, None, None
+    deposit, best = None, None
+    df_select = pd.DataFrame(columns=list(set(df.columns.append(bk.columns))))
     if request.method == 'POST':
         select1 = request.form.get('select-1')
         countries2 = df.loc[df.Team_1 == select1, 'Team_2'].unique().tolist()
         if select1 != None:
             select2 = request.form.get('select-2')
+            try:
+                df_select = df.loc[(df['Team_1'] == select1) & (df['Team_2'] == select2)]
+            except:
+                print('такого матча нет')
+        if select2 != None:
+            coef1 = request.form.get('coef-1')
+        if coef1 != None:
+            coef2 = request.form.get('coef-2')
+        if coef2 != None:
+            draw = request.form.get('draw')
+        if draw != None:
+            deposit = request.form.get('deposit')
+    # if deposit != None:
+    #     my_bet = bet(deposit, [coef1, draw, coef2]).best_combinations3()
+    #     best = my_bet.best_combinations3()
     return render_template('fork.html',
                            countries1=countries1,
                            countries2=countries2,
                            select1=select1,
                            select2=select2,
+                           coefs1=df_select.W1.sort_values(ascending=False),
+                           draws=df_select.Draw.sort_values(ascending=False),
+                           coefs2=df_select.W2.sort_values(ascending=False),
+                           coef1=coef1,
+                           draw=draw,
+                           coef2=coef2,
+                           deposit=deposit,
+                           # bet=best
                            )
 
 if __name__ == '__main__':
@@ -93,11 +119,3 @@ if __name__ == '__main__':
 
 # Чтобы запустить приложение нужно ввести в консоли export FLASK_APP=app.py
 # Затем flask run
-
-
-#
-
-#df = pd.read_csv('data/qatar_ecuador.csv', decimal=',')
-# max_coef = [df.W1.max(), df.Draw.max(), df.W2.max()]
-# my_bet = bet(100000, max_coef)
-# best = my_bet.best_combinations3()

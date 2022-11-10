@@ -75,7 +75,7 @@ li {
 
 /* Selector */
 .selector div {
-    width: 1000px;
+    width: 800px;
     font-size: 20px;
 }
 
@@ -89,7 +89,7 @@ li {
 }
 
 .selector optgroup {
-    font-size:40px;
+    font-size: 100%;
 }
 
 .selector input {
@@ -98,6 +98,15 @@ li {
     font-size: 100%;
     background: #fff;
     border-color: #fff;
+}
+
+.selector input[type=number] {
+    height:50px;
+	width:356px;
+	background: #fff;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.73);
+    padding: 2px 0px 1px 16px;
 }
 
 /* Table */
