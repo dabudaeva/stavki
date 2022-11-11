@@ -9,19 +9,24 @@ from parsing.ZenitBet_WC2022_short import zenitbet
 
 baltbet() # need to find on page
 print('baltbet - done')
-"""
+
 betcity()
 print('betcity - done')
+
 fonbet()
 print('fonbet - done')
+
 leonbet()
 print('leonbet - done')
+
 olimpbet()
 print('olimpbet - done')
+
 pari()
 print('pari - done')
+
 sportbet()
 print('sportbet - done')
+
 zenitbet()
 print('zenitbet - done')
-"""

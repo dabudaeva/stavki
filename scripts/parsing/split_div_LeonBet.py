@@ -22,7 +22,7 @@ def split_list(list):
             index_of_date = splitted[current_position].index(':')  
             date_of_game = splitted[current_position][:index_of_date-3]
             time_of_game = splitted[current_position][index_of_date-2:]           
-            result.append(['OlympBet',\
+            result.append(['LeonBet',\
                             'World cup 2022',\
                             date_of_game,\
                             time_of_game,\

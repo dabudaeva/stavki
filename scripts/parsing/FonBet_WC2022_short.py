@@ -20,7 +20,7 @@ def fonbet():
     # print(f"\nuser_agent: {user_agent}\n")
 
     # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
-    driver = webdriver.Chrome('./chromedriver')
+    driver = webdriver.Chrome('./scripts/parsing/chromedriver')
 
     # Инициализация опций Chrome
     chrome_options = Options()
@@ -36,7 +36,7 @@ def fonbet():
     driver.get("https://www.fon.bet/football-2022/")
 
     # wait until page will downloaded in browser
-    time.sleep(10)
+    time.sleep(15)
 
     # driver.get("https://www.ya.ru")
     try:    

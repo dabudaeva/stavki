@@ -17,11 +17,15 @@ def split_list(list):
             # print(f'\nx: {x}')
             # print(f'how_many_games[x]: {how_many_games[x]}')
             # print(f'start_search: {start_search}')
-            # print(f'current_position: {current_position}')            
+            # print(f'current_position: {current_position}')
+            index_of_date = splitted[current_position].index(' ')
+            # print(f'index_of: {index_of_date}')
+            date_of_game = splitted[current_position][:index_of_date]
+            time_of_game = splitted[current_position][index_of_date+1:]
             result.append(['OlympBet',\
                             'World cup 2022',\
-                            splitted[current_position],\
-                            splitted[current_position],\
+                            date_of_game,\
+                            time_of_game,\
                             splitted[current_position - 2],\
                             splitted[current_position - 1],\
                             splitted[current_position + 1],\
