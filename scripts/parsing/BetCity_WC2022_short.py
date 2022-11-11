@@ -19,7 +19,8 @@ def betcity():
     user_agent = UserAgent(verify_ssl=False).chrome
     # print(f"\nuser_agent: {user_agent}\n")
 
-    driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    driver = webdriver.Chrome('./chromedriver')
 
     # Инициализация опций Chrome
     chrome_options = Options()
@@ -35,7 +36,7 @@ def betcity():
     driver.get("https://betcity.ru/ru/line/bets?chmp%5B%5D=167030")
 
     # wait until page will downloaded in browser
-    time.sleep(10)
+    time.sleep(20)
 
     # driver.get("https://www.ya.ru")
     try:    

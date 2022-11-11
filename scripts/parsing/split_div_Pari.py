@@ -40,7 +40,7 @@ def split_list(list):
                             ])
             
             start_search = current_position + 1        
-    print(f'\nresult:\n {result}')
+    # print(f'\nresult:\n {result}')
     return result
     
 # split_list(block_name_list)

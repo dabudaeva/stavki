@@ -10,14 +10,17 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 from fake_useragent import UserAgent
 
-import split_div_Pari
-import save_to_csv
+# import split_div_Pari
+# import save_to_csv
+from parsing.split_div_Pari import split_list
+from parsing.save_to_csv import save_to_file
 
 def pari():
     user_agent = UserAgent(verify_ssl=False).chrome
     # print(f"\nuser_agent: {user_agent}\n")
 
-    driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    driver = webdriver.Chrome('./chromedriver')
 
     # Инициализация опций Chrome
     chrome_options = Options()
@@ -40,15 +43,15 @@ def pari():
         # print(f'page_source: {page_source}')
 
         # save screenshot of the page
-        driver.save_screenshot('../../data/Pari_world_cup_2022.png')
+        driver.save_screenshot('./data/Pari_world_cup_2022.png')
 
         xp_block = '//div[@class="sport-section-virtual-list--6lYPY"]'
         block_name = driver.find_elements(By.XPATH, xp_block)    
         block_name_list = [value.text for value in block_name]
         # print(f'\nblock_name_list: {block_name_list}\n')
 
-        splitted_list = split_div_Pari.split_list(block_name_list) # split List
-        save_to_csv.save_to_file(splitted_list) # splitted List saving to csv-file
+        splitted_list = split_list(block_name_list) # split List
+        save_to_file(splitted_list) # splitted List saving to csv-file
         
     except:
         print("some error happen !!")
