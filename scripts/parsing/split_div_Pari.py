@@ -28,7 +28,7 @@ def split_list(list):
             index_of_team = splitted[current_position - 1].index('—')
             team_A = splitted[current_position - 1][:index_of_team-1]
             team_B = splitted[current_position - 1][index_of_team+1:]            
-            result.append(['BetCity',\
+            result.append(['Pari',\
                             'World cup 2022',\
                             date_of_game,\
                             time_of_game,\
@@ -40,7 +40,7 @@ def split_list(list):
                             ])
             
             start_search = current_position + 1        
-    print(f'\nresult:\n {result}')
+    # print(f'\nresult:\n {result}')
     return result
     
 # split_list(block_name_list)

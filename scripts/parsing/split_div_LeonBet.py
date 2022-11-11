@@ -5,7 +5,7 @@ def split_list(list):
     for count, value in enumerate(list):
         splitted = value.split('\\n')
         splitted = value.split('\n')
-        print(f'splitted:\n{splitted}')
+        # print(f'splitted:\n{splitted}')
         separator = ':'        
         
         how_many_games = [x for x in splitted if separator in x]
@@ -22,7 +22,7 @@ def split_list(list):
             index_of_date = splitted[current_position].index(':')  
             date_of_game = splitted[current_position][:index_of_date-3]
             time_of_game = splitted[current_position][index_of_date-2:]           
-            result.append(['OlympBet',\
+            result.append(['LeonBet',\
                             'World cup 2022',\
                             date_of_game,\
                             time_of_game,\
@@ -34,7 +34,7 @@ def split_list(list):
                             ])
             start_search = current_position + 1
         
-    print(f'\nresult:\n {result}')
+    # print(f'\nresult:\n {result}')
     return result
     
 # split_list(block_name_list)

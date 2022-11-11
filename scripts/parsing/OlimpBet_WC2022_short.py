@@ -10,45 +10,48 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 from fake_useragent import UserAgent
 
-import split_div_OlympBet
-import save_to_csv
+# import split_div_OlympBet
+# import save_to_csv
+from parsing.split_div_OlympBet import split_list
+from parsing.save_to_csv import save_to_file
 
-user_agent = UserAgent(verify_ssl=False).chrome
-# print(f"\nuser_agent: {user_agent}\n")
+def olimpbet():
+    user_agent = UserAgent(verify_ssl=False).chrome
+    # print(f"\nuser_agent: {user_agent}\n")
 
-driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
+    driver = webdriver.Chrome('./scripts/parsing/chromedriver')
 
-# Инициализация опций Chrome
-chrome_options = Options()
+    # Инициализация опций Chrome
+    chrome_options = Options()
 
-# Добавление желаемых возможностей
-chrome_options.add_argument("--disable-extensions")
-chrome_options.add_argument("user-agent=" + user_agent)
+    # Добавление желаемых возможностей
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("user-agent=" + user_agent)
 
-# Неявное ожидание
-driver.implicitly_wait(10) # in seconds
+    # Неявное ожидание
+    driver.implicitly_wait(10) # in seconds
 
-# ЧМ 2022
-driver.get("https://www.olimp.bet/line/1/8100344")
+    # ЧМ 2022
+    driver.get("https://www.olimp.bet/line/1/8100344")
 
-# wait until page will downloaded in browser
-time.sleep(10)
+    # wait until page will downloaded in browser
+    time.sleep(10)
 
-try:    
-    # page_source = driver.page_source
-    # print(f'page_source: {page_source}')
+    try:    
+        # page_source = driver.page_source
+        # print(f'page_source: {page_source}')
 
-    # save screenshot of the page
-    driver.save_screenshot('OlympBet_world_cup_2022.png')
+        # save screenshot of the page
+        driver.save_screenshot('./data/OlympBet_world_cup_2022.png')
 
-    xp_block = '//div[@id="competitionId8100344"]'   
-    block_name = driver.find_elements(By.XPATH, xp_block)    
-    block_name_list = [value.text for value in block_name]
-    # print(f'\nblock_name_list: {block_name_list}\n')
+        xp_block = '//div[@id="competitionId8100344"]'   
+        block_name = driver.find_elements(By.XPATH, xp_block)    
+        block_name_list = [value.text for value in block_name]
+        # print(f'\nblock_name_list: {block_name_list}\n')
 
-    splitted_list = split_div_OlympBet.split_list(block_name_list) # split List
-    save_to_csv.save_to_file(splitted_list, 'OlympBet') # splitted List saving to csv-file
-    
-except:
-    print("some error happen !!")
-
+        splitted_list = split_list(block_name_list) # split List
+        save_to_file(splitted_list) # splitted List saving to csv-file
+        
+    except:
+        print("some error happen !!")
