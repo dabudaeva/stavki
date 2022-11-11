@@ -45,7 +45,7 @@ li {
     font-size: 18px;
 }
 .menu li:hover {
-     background-color: grey;
+     background-color: #A6ACAF;
      border-radius: 5px;
      transition: 0.3s ease;
 }
@@ -83,11 +83,11 @@ main{
 
 .input {
     height: 100%;
-    width: 200px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    top: 72px; /* Stay at the top */
-    background-color: grey; /* Black */
-    padding-top: 40px;
+    width: 200px;
+    position: fixed;
+    top: 72px;
+    background-color: #D7DBDD;
+    padding-top: 20px;
 }
 
 .output {
@@ -97,9 +97,27 @@ main{
 
 /* Selector */
 
+.selector label {
+  display: inline-block;
+  width: 140px;
+  text-align: left;
+  color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.selector p {
+  display: inline-block;
+  width: 140px;
+  text-align: left;
+  color: black;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+
 .selector select {
     height:30px;
-	width:150px;
+	width:180px;
 	font-size: 100%;
 	background: #fff;
     border-color: rgba(0, 0, 0, 0.12);
@@ -109,7 +127,7 @@ main{
 
 .selector input[type=number] {
     height:30px;
-	width:150px;
+	width:180px;
 	font-size: 100%;
 	background: #fff;
     border-color: rgba(0, 0, 0, 0.12);
@@ -119,16 +137,16 @@ main{
 
 .selector input[type=submit] {
     height:30px;
-    width:30px;
-    background: #B9DFFF;
-	color: #fff;
-	border: 1px solid #eee;
+    width:70px;
+    background: #2E86C1;
+	color: black;
+	border: 1px solid #2E86C1;
 	border-radius: 20px;
 }
 .selector input[type=submit]:hover {
-	background: #016ABC;
+	background: #1B4F72;
 	color: #fff;
-	border: 1px solid #eee;
+	border: 1px solid #1B4F72;
 	border-radius: 20px;
 }
 
@@ -150,13 +168,11 @@ main{
 .table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
-  background-color: #696969;
-  color: white;
+  background-color: #D7DBDD;
 }
 
 button {
-    color: white;
+    color: black;
     height: 100%;
     width: 100%;
     cursor: pointer;
