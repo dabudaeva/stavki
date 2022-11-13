@@ -16,11 +16,11 @@ from parsing.split_div_FonBet import split_list
 from parsing.save_to_csv import save_to_file
 
 def fonbet():
-    user_agent = UserAgent(verify_ssl=False).chrome
+    user_agent = UserAgent(verify_ssl=False, use_cache_server=False, fallback='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36').chrome
     # print(f"\nuser_agent: {user_agent}\n")
 
     # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
-    driver = webdriver.Chrome('./scripts/parsing/chromedriver')
+    driver = webdriver.Chrome('./parsing/chromedriver')
 
     # Инициализация опций Chrome
     chrome_options = Options()
@@ -44,7 +44,7 @@ def fonbet():
         # print(page_source)
 
         # save screenshot of the page
-        driver.save_screenshot('./data/FonBet_world_cup_2022.png')
+        driver.save_screenshot('./images/FonBet_world_cup_2022.png')
 
         xp_block = '//div[@class="cup__table--6mj4v"]'    
         block_name = driver.find_elements(By.XPATH, xp_block)    

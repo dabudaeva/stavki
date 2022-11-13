@@ -33,11 +33,11 @@ path = os.getcwd() + path_to_driver
 """
 
 def baltbet():
-    user_agent = UserAgent(verify_ssl=False).chrome
+    user_agent = UserAgent(verify_ssl=False, use_cache_server=False, fallback='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36').chrome
     # print(f"\nuser_agent: {user_agent}\n")
 
     # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
-    driver = webdriver.Chrome('./scripts/parsing/chromedriver')
+    driver = webdriver.Chrome('./parsing/chromedriver')
 
     # Инициализация опций Chrome
     chrome_options = Options()
@@ -60,7 +60,7 @@ def baltbet():
         # print(f'page_source: {page_source}')
 
         # save screenshot of the page
-        driver.save_screenshot('./data/BaltBet_world_cup_2022.png')
+        driver.save_screenshot('./images/BaltBet_world_cup_2022.png')
 
         # xp_block = '//*[@id="bet-place"]/div/div[2]/div[147]/div/div'
         xp_block = '//*[@id="bet-place"]/div[3]/div[2]/div[224]/div/div'

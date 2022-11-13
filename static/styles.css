@@ -60,6 +60,7 @@ main{
 /* Description */
 .description {
     margin: 40px auto 48px;
+    bottom-top: 40px;
 }
 
 .description div{
@@ -181,3 +182,23 @@ button {
     font-size: 100%;
 }
 
+.fork {
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+.fork td, .fork th {
+  border: 1px;
+  padding-right: 48px;
+  padding-left: 48px;
+  text-align: center;
+}
+
+.fork tr:nth-child(even){background-color: #f2f2f2;}
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #D7DBDD;
+}
