@@ -171,7 +171,7 @@ main{
   background-color: #D7DBDD;
 }
 
-button {
+.table button {
     color: black;
     height: 100%;
     width: 100%;
@@ -205,4 +205,24 @@ button {
     border-collapse: collapse;
     width: 1000px;
     position:
+}
+
+.bet {
+    width: 1000px;
+}
+
+button {
+    height:50px;
+    width:140px;
+    background: #2E86C1;
+	color: black;
+	border: 1px solid #2E86C1;
+	border-radius: 20px;
+}
+
+button:hover {
+	background: #1B4F72;
+	color: #fff;
+	border: 1px solid #1B4F72;
+	border-radius: 20px;
 }

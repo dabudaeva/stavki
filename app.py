@@ -7,6 +7,7 @@ from itertools import product
 from flask import Flask, render_template, abort, request
 from flask.json import jsonify
 from scripts.forks import compute_bet
+from scripts.parser import update_data
 
 import warnings
 
@@ -35,10 +36,22 @@ def info():
                            image=bk.logo,
                            indexes=np.arange(bk.shape[0]))
 
+
+@app.route('/json')
+def json():
+    return render_template('json.html')
+
+
+@app.route('/background_process_test')
+def background_process_test():
+    update_data()
+    return ("nothing")
+
+
 @app.route('/bet', methods=['GET', 'POST'])
 def bet():
     df = pd.read_csv('data/data.csv')
-    bk = pd.read_csv('data/bookmakers.csv')
+    bk = pd.read_csv('data/bookmakers_all.csv')
     countries1 = df.Team_1.sort_values(ascending=True).unique().tolist()
     countries2 = None
     select1, select2 = None, None
@@ -47,6 +60,9 @@ def bet():
     best_coef, link, logo = None, None, None
 
     if request.method == 'POST':
+        if request.form.get('update_data') == 'Update!':
+            update_data()
+
         select1 = request.form.get('select-1')
         select1 = None if select1 == 'None' else select1
         countries2 = df.loc[df.Team_1 == select1, 'Team_2'].sort_values(ascending=True).unique().tolist()
@@ -90,7 +106,7 @@ def bet():
 @app.route('/fork', methods=['GET', 'POST'])
 def fork():
     df = pd.read_csv('data/data.csv')
-    bk = pd.read_csv('data/bookmakers.csv')
+    bk = pd.read_csv('data/bookmakers_all.csv')
     deposit, coef1, draw, coef2 = None, None, None, None
     coefs, best_bet, profit = [None, None, None], [None, None, None], [None, None, None]
     data_coef = []

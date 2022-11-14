@@ -53,56 +53,64 @@
             <div class="output">
                 <div class='table'>
                     <br>
-                    {% if tables is defined and tables|length > 0 %}
-                    <h1>Вилки, которые удалось обнаружить: </h1>
-                    <br>
-                    <div align="center">
-                        {% for table in tables %}
-                            {{ table|safe }}
-                        {% endfor %}
-                    </div>
-                    </br>
-                    {% endif %}
-                    </br>
-
-                    <div class="table" vspace="60">
                         <br>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Команда 1</th>
-                                    <th>Ничья</th>
-                                    <th>Команда 2</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Коэффициенты:</td>
-                                    <td>{{ coefs[0] }}</td>
-                                    <td>{{ coefs[1] }}</td>
-                                    <td>{{ coefs[2] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Ставка:</td>
-                                    <td>{{ best_bet[0] }}</td>
-                                    <td>{{ best_bet[1] }}</td>
-                                    <td>{{ best_bet[2] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Чистый выигрыш:</td>
-                                    <td>{{ profit[0] }}</td>
-                                    <td>{{ profit[1] }}</td>
-                                    <td>{{ profit[2] }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                        <div class="bet">
+                            <h1>Расчет ставки</h1>
+                            <div class="table" vspace="60">
+                            <br>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Команда 1</th>
+                                        <th>Ничья</th>
+                                        <th>Команда 2</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Коэффициенты:</td>
+                                        <td>{{ coefs[0] }}</td>
+                                        <td>{{ coefs[1] }}</td>
+                                        <td>{{ coefs[2] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ставка:</td>
+                                        <td>{{ best_bet[0] }}</td>
+                                        <td>{{ best_bet[1] }}</td>
+                                        <td>{{ best_bet[2] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Чистый выигрыш:</td>
+                                        <td>{{ profit[0] }}</td>
+                                        <td>{{ profit[1] }}</td>
+                                        <td>{{ profit[2] }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </br>
+                            </div>
+                        </div>
                         </br>
-                    </div>
+                        {% if tables is defined and tables|length > 0 %}
+                        <div class="bet">
+                            <br>
+                            <h1>Вилки, которые удалось обнаружить</br>в ставках на ЧМ: </h1>
+                            </br>
+                            <br>
+                            <div align="center">
+                                {% for table in tables %}
+                                    {{ table|safe }}
+                                {% endfor %}
+                            </div>
+                            </br>
 
+                        </div>
+                        {% endif %}
+                    </br>
+                </div>
             </div>
-            </br>
-        </div>
+        </br>
     </main>
 </body>
 </html>

@@ -12,8 +12,8 @@ from fake_useragent import UserAgent
 
 # import split_div_FonBet
 # import save_to_csv
-from parsing.split_div_FonBet import split_list
-from parsing.save_to_csv import save_to_file
+from scripts.parsing.split_div_FonBet import split_list
+from scripts.parsing.save_to_csv import save_to_file
 
 def fonbet():
     user_agent = UserAgent(verify_ssl=False, use_cache_server=False, fallback='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36').chrome

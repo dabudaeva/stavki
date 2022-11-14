@@ -21,21 +21,25 @@
         <div class="selector" align="middle">
             <br>
             <div class="input" align="middle">
-
                 {% if select1 is none %}
                 <form action="" method="POST">
-                    <label>Команды:</label>
-                    <br>
-                        <p>Команда 1:</p>
-                        <select name="select-1">
-                            <optgroup>
-                                <option>{{ select1 }}</option>
-                                {% for country1 in countries1%}
-                                <option>{{ country1 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </br>
+                    <div>
+                        <br><a href=# id=test><button class='btn btn-default'>Обновить </br> коэффициенты!</button></a></br>
+                        <br><progress id="myprogressBar"></progress></br>
+                    </div>
+                    <div>
+                        <br>
+                            <h4>Команда 1:</h4>
+                            <select name="select-1">
+                                <optgroup>
+                                    <option>{{ select1 }}</option>
+                                    {% for country1 in countries1%}
+                                    <option>{{ country1 }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </br>
+                    </div>
                     <br>
                     <input type="submit" value="submit">
                     </br>
@@ -44,28 +48,34 @@
 
                 {% if (select1 is not none) and (select2 is none) %}
                 <form action="" method="POST">
-                    <label>Команды:</label>
-                    <br>
-                        <p>Команда 1:</p>
-                        <select name="select-1">
-                            <optgroup>
-                                <option>{{ select1 }}</option>
-                                {% for country1 in countries1%}
-                                <option value={{ country1 }}>{{ country1 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-
-                        <p>Команда 2:</p>
-                        <select name="select-2">
-                            <optgroup>
-                                <option>{{ select2 }}</option>
-                                {% for country2 in countries2%}
-                                <option value={{ country2 }}>{{ country2 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </br>
+                    <div>
+                        <br><a href=# id=test><button class='btn btn-default'>Test</button></a></br>
+                        <br><progress id="myprogressBar"></progress></br>
+                    </div>
+                    <div>
+                        <br>
+                            <h4>Команда 1:</h4>
+                            <select name="select-1">
+                                <optgroup>
+                                    <option>{{ select1 }}</option>
+                                    {% for country1 in countries1%}
+                                    <option value={{ country1 }}>{{ country1 }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </br>
+                        <br>
+                            <h4>Команда 2:</h4>
+                            <select name="select-2">
+                                <optgroup>
+                                    <option>{{ select2 }}</option>
+                                    {% for country2 in countries2%}
+                                    <option value={{ country2 }}>{{ country2 }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </br>
+                    </div>
                     <br>
                     <input type="submit" value="submit">
                     </br>
@@ -74,30 +84,34 @@
 
                 {% if select2 is not none %}
                 <form action="" method="POST">
-                    <label>Команды:</label>
-
-                    <br>
-                        <p>Команда 1:</p>
-                        <select name="select-1">
-                            <optgroup>
-                                <option>{{ select1 }}</option>
-                                {% for country1 in countries1%}
-                                <option value={{ country1 }}>{{ country1 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-
-                        <p>Команда 2:</p>
-                        <select name="select-2">
-                            <optgroup>
-                                <option>{{ select2 }}</option>
-                                {% for country2 in countries2%}
-                                <option value={{ country2 }}>{{ country2 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </br>
-
+                    <div>
+                        <br><a href=# id=test><button class='btn btn-default'>Test</button></a></br>
+                        <br><progress id="myprogressBar"></progress></br>
+                    </div>
+                    <div>
+                        <br>
+                            <h4>Команда 1:</h4>
+                            <select name="select-1">
+                                <optgroup>
+                                    <option>{{ select1 }}</option>
+                                    {% for country1 in countries1%}
+                                    <option value={{ country1 }}>{{ country1 }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </br>
+                        <br>
+                            <h4>Команда 2:</h4>
+                            <select name="select-2">
+                                <optgroup>
+                                    <option>{{ select2 }}</option>
+                                    {% for country2 in countries2%}
+                                    <option value={{ country2 }}>{{ country2 }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </br>
+                    </div>
                     <br>
                         <input type="submit" value="submit">
                     </br>
@@ -209,6 +223,32 @@
         }
       }
     }
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('a#test').on('click', function(e) {
+
+              var element = document.getElementById("myprogressBar");
+              var width = 1;
+              var identity = setInterval(scene, 10);
+              function scene() {
+              if (width >= 100) {
+              clearInterval(identity);
+                } else {
+                    width++;
+                    element.style.width = width + '%';
+                    }
+                }
+
+                e.preventDefault()
+                $.getJSON('/background_process_test',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
     </script>
 </body>
 </html>

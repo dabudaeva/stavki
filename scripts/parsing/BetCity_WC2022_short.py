@@ -12,8 +12,8 @@ from fake_useragent import UserAgent
 
 # import split_div_BetCity
 # import save_to_csv
-from parsing.split_div_BetCity import split_list
-from parsing.save_to_csv import save_to_file
+from scripts.parsing.split_div_BetCity import split_list
+from scripts.parsing.save_to_csv import save_to_file
 
 
 def betcity():
