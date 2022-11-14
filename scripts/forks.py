@@ -1,7 +1,7 @@
 import math
 import numpy as np
 
-class bet():
+class compute_bet():
     def __init__(self, deposit, coefficients):
         self.deposit = deposit
         self.coefficients = coefficients

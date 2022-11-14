@@ -11,6 +11,7 @@
         <ul class="nav-links">
             <div class="menu">
                 <li><a href="/bet">Коэффициенты</a></li>
+                <li><a href="/fork">Вилки</a></li>
                 <li><a href="/info">Информация</a></li>
             </div>
         </ul>
@@ -71,7 +72,7 @@
                 </form>
                 {% endif %}
 
-                {% if (select2 is not none) and (deposit is none) %}
+                {% if select2 is not none %}
                 <form action="" method="POST">
                     <label>Команды:</label>
 
@@ -97,127 +98,9 @@
                         </select>
                     </br>
 
-                    <label>Депозит:</label>
-                    <br>
-                        <input type="number" step="1" min="1" max="100000" value="10000" name="deposit"/>
-                    </br>
                     <br>
                         <input type="submit" value="submit">
                     </br>
-                </form>
-                {% endif %}
-
-                {% if (deposit is not none) and (coef2 is none) %}
-                <form action="" method="POST">
-                    <label>Команды:</label>
-
-                    <br>
-                        <p>Команда 1:</p>
-                        <select name="select-1">
-                            <optgroup>
-                                <option>{{ select1 }}</option>
-                                {% for country1 in countries1%}
-                                <option value={{ country1 }}>{{ country1 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-
-                        <p>Команда 2:</p>
-                        <select name="select-2">
-                            <optgroup>
-                                <option>{{ select2 }}</option>
-                                {% for country2 in countries2%}
-                                <option value={{ country2 }}>{{ country2 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </br>
-
-                    <label>Депозит:</label>
-                    <br>
-                        <input type="number" step="1" min="1" max="100000" value={{ deposit }} name="deposit"/>
-                    </br>
-
-                    <label>Коэффициенты:</label>
-                    <br>
-                        <p>Коэффициент на команду 1:</p>
-                        <br>
-                            <input type="number" step="any" value={{ best_coef[0] }} name="coef-1"/>
-                        </br>
-
-                        <p>Коэффициент на ничью:</p>
-                        <br>
-                            <input type="number" step="any" value={{ best_coef[1] }} name="draw"/>
-                        </br>
-
-                        <p>Коэффициент на команду 2:</p>
-                        <br>
-                            <input type="number" step="any" value={{ best_coef[2] }} name="coef-2"/>
-                        </br>
-
-                    </br>
-
-                    <br>
-                    <input type="submit" value="submit">
-                    </br>
-
-                </form>
-                {% endif %}
-
-                {% if coef2 is not none %}
-                <form action="" method="POST">
-                    <label>Команды:</label>
-
-                    <br>
-                        <p>Команда 1:</p>
-                        <select name="select-1">
-                            <optgroup>
-                                <option>{{ select1 }}</option>
-                                {% for country1 in countries1%}
-                                <option value={{ country1 }}>{{ country1 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-
-                        <p>Команда 2:</p>
-                        <select name="select-2">
-                            <optgroup>
-                                <option>{{ select2 }}</option>
-                                {% for country2 in countries2%}
-                                <option value={{ country2 }}>{{ country2 }}</option>
-                                {% endfor %}
-                            </optgroup>
-                        </select>
-                    </br>
-
-                    <label>Депозит:</label>
-                    <br>
-                        <input type="number" step="1" min="1" max="100000" value={{ deposit }} name="deposit"/>
-                    </br>
-
-                    <label>Коэффициенты:</label>
-                    <br>
-                        <p>Коэффициент на команду 1:</p>
-                        <br>
-                            <input type="number" step="any" value={{ coef1 }} name="coef-1"/>
-                        </br>
-
-                        <p>Коэффициент на ничью:</p>
-                        <br>
-                            <input type="number" step="any" value={{ draw }} name="draw"/>
-                        </br>
-
-                        <p>Коэффициент на команду 2:</p>
-                        <br>
-                            <input type="number" step="any" value={{ coef2 }} name="coef-2"/>
-                        </br>
-
-                    </br>
-
-                    <br>
-                    <input type="submit" value="submit">
-                    </br>
-
                 </form>
                 {% endif %}
 
@@ -293,44 +176,6 @@
                         </br>
                     </div>
                     {% endif %}
-
-                    {% if coefs is not none %}
-                    <div class="table" vspace="60">
-                        <br>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Команда 1</th>
-                                    <th>Ничья</th>
-                                    <th>Команда 2</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Коэффициенты:</td>
-                                    <td>{{ coefs[0] }}</td>
-                                    <td>{{ coefs[1] }}</td>
-                                    <td>{{ coefs[2] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Ставка:</td>
-                                    <td>{{ best_bet[0] }}</td>
-                                    <td>{{ best_bet[1] }}</td>
-                                    <td>{{ best_bet[2] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Чистый выигрыш:</td>
-                                    <td>{{ profit[0] }}</td>
-                                    <td>{{ profit[1] }}</td>
-                                    <td>{{ profit[2] }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </br>
-                    </div>
-                    {% endif %}
-
                     </br>
                 </div>
             {% endif %}

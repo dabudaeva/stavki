@@ -95,7 +95,6 @@ main{
     padding-left: 200px;
 }
 
-
 /* Selector */
 
 .selector label {
@@ -188,7 +187,6 @@ button {
 }
 
 .fork td, .fork th {
-  border: 1px;
   padding-right: 48px;
   padding-left: 48px;
   text-align: center;
@@ -201,4 +199,10 @@ button {
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #D7DBDD;
+}
+
+.table-fork {
+    border-collapse: collapse;
+    width: 1000px;
+    position:
 }
