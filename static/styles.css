@@ -166,8 +166,6 @@ main{
 .table tr:hover {background-color: #ddd;}
 
 .table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
   background-color: #D7DBDD;
 }
 
@@ -180,6 +178,33 @@ main{
     border: none !important;
     font-size: 100%;
 }
+
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th, td {
+  white-space: nowrap;
+  overflow-x: scroll;
+  text-overflow: ellipsis;
+  padding-top:12px;
+  padding-bottom: 12px;
+}
+
+th:hover,
+td:hover {
+  text-overflow: clip;
+}
+
+
+
+
+
+
+
+
 
 .fork {
   border-collapse: collapse;
@@ -212,4 +237,35 @@ button:hover {
 	color: #fff;
 	border: 1px solid #1B4F72;
 	border-radius: 20px;
+}
+.count-bet-info div{
+    width: 800px;
+    text-align: center;
+}
+
+.prediction-info {
+    margin: 40px auto 48px;
+}
+
+.prediction-info div{
+    width: 1000px;
+}
+.prediction-info-row {display: flex;}
+.prediction-info-column-left {
+    text-align: center;
+    flex: 35%;
+}
+.prediction-info-column-right {
+    text-align: left;
+    flex: 65%;
+}
+
+
+pre{
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  overflow: auto;
+  width: auto;
+  width: 650px!ie7;
+  max-height: 600px;
 }

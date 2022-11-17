@@ -7,6 +7,7 @@ from scripts.parsing.pari_WC2022 import pari
 from scripts.parsing.sportBet_WC2022 import sportbet
 from scripts.parsing.zenitBet_WC2022 import zenitbet
 
+import numpy as np
 import pandas as pd
 import os
 
@@ -51,6 +52,10 @@ def update_data():
     
     df = pd.read_csv('./data/data.csv', on_bad_lines='skip')
     df[['W1', 'Draw', 'W2']] = df[['W1', 'Draw', 'W2']].apply(lambda x: x.astype(str).str.replace(',', '.'))
+    df[['W1', 'Draw', 'W2']] = df[['W1', 'Draw', 'W2']].apply(lambda x: x.astype(str).str.replace(r"[^\d\.]", "", regex=True))
+    df.loc[df.W1 == "", 'W1'] = np.nan
+    df.loc[df.Draw == "", 'Draw'] = np.nan
+    df.loc[df.W2 == "", 'W2'] = np.nan
     df = df.astype({'W1': 'float64', 'Draw': 'float64', 'W2': 'float64'})
     df['Marginal'] = round((1 / df.W1 + 1 / df.Draw + 1 / df.W2) * 100 - 100, 2)
     df.loc[df['Team_1'].str.contains('Корея'), 'Team_1'] = 'Южная Корея'

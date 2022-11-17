@@ -44,7 +44,92 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div class="count-fork-info" align="middle">
+            <div align="middle">
+                <br><h2>Проверка наличия вилки:</h2></br>
+            </div>
+            <div align="middle">
+                <br><div class="latex">$\frac{1}{коэффициент \, 1}+\frac{1}{коэффициент \, 2}=\ p$</div></br>
+            </div>
+            <div align="middle">
+                <br><div class="latex">Если $\ p$ меньше 0, значит вилки нет</div></br>
+            </div>
+        </div>
+
+        <div class="count-bet-info" align="middle">
+            <div align="middle">
+                <br><h2>Расчет размера ставки:</h2></br>
+            </div>
+            <div align="middle">
+                <br><div class="latex">$bet={\large\frac{\frac{депозит}{коэффициент}}{\ p}}$</div></br>
+            </div>
+        </div>
+
+        <div class="prediction-info" align="middle">
+            <div align="middle">
+                <br>
+                <h2>Расчет собственных коэффициентов:</h2>
+                </br>
+            </div>
+            <div align="middle">
+                <br>
+                <div class="bookmakers-info-row" vspace="60">
+                    <br>
+                    <div class="bookmakers-info-column-left" align="middle">
+                        <br><h4>Данные:</h4></br>
+                    </div>
+                    <div class="bookmakers-info-column-right" align="left">
+                        <br><a href="https://www.kaggle.com/datasets/brenda89/fifa-world-cup-2022">FIFA World Cup 2022 ⚽️🏆</a></br>
+                        <br><p>* Матчи с 1993 по 2022</p>
+                        <br><p>* Рейтинг FIFA</p>
+                        <br><p>* Ранг FIFA</p>
+                        <br><p>* Оценка защиты, нападения, полузащиты и вратаря в EA Sport FIFA</p>
+                    </div>
+                    </br>
+                </div>
+                </br>
+                <br>
+                <div class="bookmakers-info-row" vspace="60">
+                    <br>
+                    <div class="bookmakers-info-column-left" align="middle">
+                        <br><h4>Модели:</h4></br>
+                    </div>
+                    <div class="bookmakers-info-column-right" align="left">
+                        <br><pre>LogisticRegression                  0.69 (точность при 2 исходах)     0.58 (3 исхода)</pre>
+                        <br><pre>KNeighborsClassifier               0.66 (точность при 2 исходах)    0.55 (3 исхода)</pre>
+                        <br><pre>RandomForestClassifier          0.69 (точность при 2 исходах)    0.59 (3 исхода)</pre>
+                        <br><pre>GradientBoostingClassifier      0.69 (точность при 2 исходах)    0.59 (3 исхода)</pre>
+                        <br><pre>LGBMClassifier                       0.69 (точность при 2 исходах)    0.59 (3 исхода)</pre>
+                        <br><pre>XGBClassifier                          0.69 (точность при 2 исходах)    0.59 (3 исхода)</pre>
+                        <br><pre>CatBoostClassifier                   0.68 (точность при 2 исходах)    0.56 (3 исхода)</pre>
+                        <br><pre>StackingClassifier                    0.68 (точность при 2 исходах)    0.57 (3 исхода)</pre>
+                        <br><pre>Simple NN                               0.69 (точность при 2 исходах)    0.58 (3 исхода)</pre>
+                    </div>
+                    </br>
+                </div>
+                </br>
+            </div>
+
+        </div>
+
+
+        <div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+        </div>
     </main>
 
 </body>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </html>

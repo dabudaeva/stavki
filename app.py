@@ -111,13 +111,14 @@ def bet():
             if not data.empty:
                 indexes2 = np.arange(data.shape[0])
                 best_coef = data.loc[data.Fork == data.Fork.min()]
+                best_coef = best_coef.drop_duplicates()
                 best_coef = [best_coef.W1.item(), best_coef.Draw.item(), best_coef.W2.item()]
-                logo = [df_select.loc[df_select.W1==best_coef[0], 'logo'].item(),
-                        df_select.loc[df_select.Draw==best_coef[1], 'logo'].item(),
-                        df_select.loc[df_select.W2==best_coef[2], 'logo'].item()]
-                link = [df_select.loc[df_select.W1==best_coef[0], 'homepage'].item(),
-                        df_select.loc[df_select.Draw==best_coef[1], 'homepage'].item(),
-                        df_select.loc[df_select.W2==best_coef[2], 'homepage'].item()]
+                logo = [df_select.loc[df_select.W1==best_coef[0], 'logo'].iloc[0],
+                        df_select.loc[df_select.Draw==best_coef[1], 'logo'].iloc[0],
+                        df_select.loc[df_select.W2==best_coef[2], 'logo'].iloc[0]]
+                link = [df_select.loc[df_select.W1==best_coef[0], 'homepage'].iloc[0],
+                        df_select.loc[df_select.Draw==best_coef[1], 'homepage'].iloc[0],
+                        df_select.loc[df_select.W2==best_coef[2], 'homepage'].iloc[0]]
         except: pass
 
         # 2 исхода
@@ -232,6 +233,8 @@ def bet():
 @app.route('/fork', methods=['GET', 'POST'])
 def fork():
     df = pd.read_csv('data/data.csv')
+    df = df.groupby(['BookMakers', 'Team_1', 'Team_2']).agg(['last']).reset_index()
+    df.columns = df.columns.droplevel(1)
     bk = pd.read_csv('data/bookmakers_all.csv')
     deposit, coef1, draw, coef2 = None, None, None, None
     coefs, best_bet, profit = [None, None, None], [None, None, None], [None, None, None]
@@ -275,7 +278,7 @@ def fork():
         except: pass
 
     return render_template('fork.html',
-                           tables=[data_coef.to_html(classes='table')],
+                           tables=[data_coef.to_html(classes='table', index=False)],
                            titles=data_coef.columns.values,
                            deposit=deposit, coef1=coef1, draw=draw, coef2=coef2,
                            best_bet=best_bet, profit=profit, coefs=coefs,
