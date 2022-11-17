@@ -31,8 +31,8 @@ def betcity(parsing_date):
     # print(f"\nuser_agent: {user_agent}\n")
 
     # driver = webdriver.Chrome('/home/petrucho/Downloads/chromedriver_linux64/chromedriver')
-    # driver = webdriver.Chrome('./parsing/chromedriver')
     driver = webdriver.Chrome('./scripts/parsing/chromedriver')
+    # driver = webdriver.Chrome()
 
     # Инициализация опций Chrome
     chrome_options = Options()

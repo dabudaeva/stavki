@@ -36,8 +36,8 @@ def update_data():
     leonbet(time_string)
     print('leonbet - done')
     
-    olimpbet(time_string)
-    print('olimpbet - done')
+    #olimpbet(time_string)
+    #print('olimpbet - done')
     
     pari(time_string)
     print('pari - done')
@@ -49,7 +49,7 @@ def update_data():
     print('zenitbet - done')
 
     
-    df = pd.read_csv('./data/data.csv')
+    df = pd.read_csv('./data/data.csv', on_bad_lines='skip')
     df[['W1', 'Draw', 'W2']] = df[['W1', 'Draw', 'W2']].apply(lambda x: x.astype(str).str.replace(',', '.'))
     df = df.astype({'W1': 'float64', 'Draw': 'float64', 'W2': 'float64'})
     df['Marginal'] = round((1 / df.W1 + 1 / df.Draw + 1 / df.W2) * 100 - 100, 2)
@@ -61,4 +61,4 @@ def update_data():
     
     return 'Done!'
 
-update_data()
+# update_data()

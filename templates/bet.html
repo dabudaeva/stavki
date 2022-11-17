@@ -21,6 +21,7 @@
         <div class="selector" align="middle">
             <br>
             <div class="input" align="middle">
+                <div class="input-1">
                 {% if select1 is none %}
                 <form action="" method="POST">
                     <div>
@@ -117,7 +118,7 @@
                     </br>
                 </form>
                 {% endif %}
-
+                </div>
             </div>
             </br>
 
@@ -127,7 +128,7 @@
             {% if indexes is not none %}
                 <div align="middle">
 
-                    <h1>Таблица коэффициентов</h1>
+                    <h1>Таблица коэффициентов</br>букмекеров</h1>
 
                     <br>
                     <div class="table" vspace="60">
@@ -190,6 +191,16 @@
                         </br>
                     </div>
                     {% endif %}
+                    </br>
+                </div>
+                <div class="table-3" align="center">
+                    <br>
+                    <h1>Таблица наших коэффициентов</h1>
+                    </br>
+                    <br>
+                    {% for table in tables %}
+                        {{ table|safe }}
+                    {% endfor %}
                     </br>
                 </div>
             {% endif %}
