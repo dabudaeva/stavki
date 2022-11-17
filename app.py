@@ -224,7 +224,7 @@ def fork():
                            titles=data_coef.columns.values,
                            deposit=deposit, coef1=coef1, draw=draw, coef2=coef2,
                            best_bet=best_bet, profit=profit, coefs=coefs,
-    )
+                           )
 
 
 if __name__ == '__main__':
