@@ -196,9 +196,21 @@
                 <div class="table-3" align="center">
                     <br>
                     <h1>Таблица наших коэффициентов</h1>
+                    <h3>(с 2 исходами)</h3>
                     </br>
                     <br>
                     {% for table in tables %}
+                        {{ table|safe }}
+                    {% endfor %}
+                    </br>
+                </div>
+                <div class="table-3" align="center">
+                    <br>
+                    <h1>Таблица наших коэффициентов</h1>
+                    <h3>(с 3 исходами)</h3>
+                    </br>
+                    <br>
+                    {% for table in tables3 %}
                         {{ table|safe }}
                     {% endfor %}
                     </br>

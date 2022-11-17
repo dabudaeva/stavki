@@ -66,9 +66,12 @@ def bet():
     best_coef, link, logo = None, None, None
 
     preds = pd.read_csv('data/ratings/predicted2.csv', index_col=[0])
+    preds3 = pd.read_csv('data/ratings/predicted3.csv', index_col=[0])
     coefs = 1/preds.iloc[:, 2:]
+    coefs3 = 1 / preds3.iloc[:, 2:]
 
     coefs[['home_team', 'away_team']] = preds[['home_team', 'away_team']]
+    coefs3[['home_team', 'away_team']] = preds3[['home_team', 'away_team']]
     teams = {'Qatar':'Катар', 'Ecuador':'Эквадор', 'Senegal':'Сенегал', 'Netherlands':'Нидерланды',
              'England':'Англия', 'Iran':'Иран', 'USA':'США', 'Wales':'Уэльс', 'Argentina':'Аргентина',
              'Saudi Arabia':'Саудовская Аравия', 'Mexico':'Мексика', 'Poland':'Польша',
@@ -79,9 +82,12 @@ def bet():
              'Cameroon':'Камерун', 'Portugal':'Португалия', 'Ghana':'Гана', 'Uruguay':'Уругвай',
              'South Korea':'Южная Корея'}
     coefs.home_team = coefs.home_team.map(teams)
+    coefs3.home_team = coefs3.home_team.map(teams)
     coefs.away_team = coefs.away_team.map(teams)
+    coefs3.away_team = coefs3.away_team.map(teams)
 
     df_select_coef=pd.DataFrame(columns=['Команда 1', 'Команда 2'])
+    df_select_coef3 = pd.DataFrame(columns=['Команда 1', 'Команда 2'])
 
     if request.method == 'POST':
         if request.form.get('update_data') == 'Update!':
@@ -113,6 +119,8 @@ def bet():
                         df_select.loc[df_select.Draw==best_coef[1], 'homepage'].item(),
                         df_select.loc[df_select.W2==best_coef[2], 'homepage'].item()]
         except: pass
+
+        # 2 исхода
 
         try:
             df_select_coef = coefs.loc[(coefs.home_team == select1) & (coefs.away_team == select2)]
@@ -159,6 +167,52 @@ def bet():
                 df_select_coef = df_select_coef.apply(lambda x: x.astype('object'))
             except: pass
 
+        # 3 исхода
+
+        try:
+            df_select_coef3 = coefs3.loc[(coefs3.home_team == select1) & (coefs3.away_team == select2)]
+            if df_select_coef3.empty:
+                df_select_coef3 = pd.DataFrame(columns=['Команда 1', 'Ничья', 'Команда 2'])
+            df_select_coef3 = pd.DataFrame([df_select_coef3[['mean_home', 'mean_draw', 'mean_away']].to_numpy()[0],
+                                            df_select_coef3[['lm_home', 'lm_draw', 'lm_away']].to_numpy()[0],
+                                            df_select_coef3[['knn_home', 'knn_draw', 'knn_away']].to_numpy()[0],
+                                            df_select_coef3[['rf_home', 'rf_draw', 'rf_away']].to_numpy()[0],
+                                            df_select_coef3[['gb_home', 'gb_draw', 'gb_away']].to_numpy()[0],
+                                            df_select_coef3[['lgbm_home', 'lgbm_draw', 'lgbm_away']].to_numpy()[0],
+                                            df_select_coef3[['xgb_home', 'xgb_draw', 'xgb_away']].to_numpy()[0],
+                                            df_select_coef3[['cb_home', 'cb_draw', 'cb_away']].to_numpy()[0],
+                                            df_select_coef3[['sc_home', 'sc_draw', 'sc_away']].to_numpy()[0],
+                                            df_select_coef3[['nn_home', 'nn_draw', 'nn_away']].to_numpy()[0]],
+                                           index=['Mean', 'LogisticRegression', 'KNeighborsClassifier',
+                                                  'RandomForestClassifier', 'GradientBoostingClassifier',
+                                                  'LGBMClassifier', 'XGBClassifier',
+                                                  'CatBoostClassifier', 'StackingClassifier',
+                                                  'Simple NN'], columns=[select1, 'Ничья', select2])
+            df_select_coef3 = df_select_coef3.round(2)
+            df_select_coef3 = df_select_coef3.apply(lambda x: x.astype('object'))
+        except:
+            try:
+                df_select_coef3 = coefs3.loc[(coefs3.home_team == select2) & (coefs3.away_team == select1)]
+                if df_select_coef3.empty:
+                    df_select_coef3 = pd.DataFrame(columns=['Команда 1', 'Ничья', 'Команда 2'])
+                df_select_coef3 = pd.DataFrame([df_select_coef3[['mean_away', 'mean_draw', 'mean_home']].to_numpy()[0],
+                                                df_select_coef3[['lm_away', 'lm_draw', 'lm_home']].to_numpy()[0],
+                                                df_select_coef3[['knn_away', 'knn_draw', 'knn_home']].to_numpy()[0],
+                                                df_select_coef3[['rf_away', 'rf_draw', 'rf_home']].to_numpy()[0],
+                                                df_select_coef3[['gb_away', 'gb_draw', 'gb_home']].to_numpy()[0],
+                                                df_select_coef3[['lgbm_away', 'lgbm_draw', 'lgbm_home']].to_numpy()[0],
+                                                df_select_coef3[['xgb_away', 'xgb_draw', 'xgb_home']].to_numpy()[0],
+                                                df_select_coef3[['cb_away', 'cb_draw', 'cb_home']].to_numpy()[0],
+                                                df_select_coef3[['sc_away', 'sc_draw', 'sc_home']].to_numpy()[0],
+                                                df_select_coef3[['nn_away', 'nn_draw', 'nn_home']].to_numpy()[0]],
+                                               index=['Mean', 'LogisticRegression', 'KNeighborsClassifier',
+                                                      'RandomForestClassifier', 'GradientBoostingClassifier',
+                                                      'LGBMClassifier', 'XGBClassifier',
+                                                      'CatBoostClassifier', 'StackingClassifier',
+                                                      'Simple NN'], columns=[select1, 'Ничья', select2])
+                df_select_coef3 = df_select_coef3.round(2)
+                df_select_coef3 = df_select_coef3.apply(lambda x: x.astype('object'))
+            except: pass
 
 
     return render_template('bet.html',
@@ -172,6 +226,7 @@ def bet():
                            best_coef=best_coef,
                            best_link=link, best_logo=logo,
                            tables=[df_select_coef.to_html(classes='table')],
+                           tables3=[df_select_coef3.to_html(classes='table')],
                            )
 
 @app.route('/fork', methods=['GET', 'POST'])
